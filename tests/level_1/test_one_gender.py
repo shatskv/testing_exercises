@@ -1,8 +1,10 @@
 from functions.level_1.one_gender import genderalize
 
 
-def test_genderalize():
-    assert genderalize(1, 0, 'male') == 1
-    assert genderalize(1, 0, 'df') == 0
+def test__genderalize__is_male():
     assert genderalize('male', 'female', 'male') == 'male'
-    assert genderalize(None, 'female', 'male') == None
+
+
+def test__genderalize__is_female():
+    assert genderalize('male', 'female', '1male') == 'female'
+    assert genderalize('male', 'female', 'female') == 'female'
