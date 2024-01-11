@@ -5,17 +5,27 @@ import pytest
 from functions.level_1.two_date_parser import compose_datetime_from
 
 
-def test__compose_datetime__bad_format_time_exc_valuerror():
+def test__compose_datetime__bad_format_time_raise_valuerror():
     with pytest.raises(ValueError):
         compose_datetime_from('tomorrow', '12.15')
 
 
 def test__compose_datetime__date_yesterday():
-    datetime_now = datetime.now()
+    date_today = datetime.today()
 
     datetime_today = compose_datetime_from('yesterday', '12:15')
     
-    assert datetime_today  == datetime(datetime_now.year, datetime_now.month, datetime_now.day, 12, 15, 0)
+    assert datetime_today.date() == date_today.date()
+
+
+def test__compose_datetime__right_time():
+    hours = 12
+    minutes = 43
+
+    datetime_today = compose_datetime_from('today', f'{hours}:{minutes}')
+
+    assert datetime_today.hour == hours
+    assert datetime_today.minute == minutes
 
 
 def test__compose_datetime__date_tomorrow():
