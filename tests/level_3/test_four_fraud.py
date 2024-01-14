@@ -84,7 +84,7 @@ def test__find_fraud_expenses__fraud_transactions_not_emmpty(generate_expense, c
         )
     ]
 )
-def test__find_fraud_expenses__fraud_transactions_not_emmpty(generate_expense, card, expenses_data, fraud_transactions_data, datetime_now, get_datatime_months_ago):
+def test__find_fraud_expenses__fraud_transactions_emmpty(generate_expense, card, expenses_data, fraud_transactions_data, datetime_now, get_datatime_months_ago):
     expenses = []
     fraud_transactions = []
     for record in expenses_data:
