@@ -64,4 +64,4 @@ def create_config(filepath_ini) -> Callable[[str], filepath_ini]:
         return filepath_ini
         
     yield _create_config
-    # os.remove(filepath_ini)
+    os.remove(filepath_ini)
