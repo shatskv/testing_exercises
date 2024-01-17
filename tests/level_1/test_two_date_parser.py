@@ -10,26 +10,24 @@ def test__compose_datetime__bad_format_time_raise_valuerror():
         compose_datetime_from('tomorrow', '12.15')
 
 
-def test__compose_datetime__date_yesterday():
-    date_today = datetime.today()
+def test__compose_datetime__date_yesterday(today):
+    
 
     datetime_today = compose_datetime_from('yesterday', '12:15')
     
-    assert datetime_today.date() == date_today.date()
+    assert datetime_today.date() == today.date()
 
 
 def test__compose_datetime__right_time():
-    hours = 12
-    minutes = 43
 
-    datetime_today = compose_datetime_from('today', f'{hours}:{minutes}')
+    datetime_today = compose_datetime_from('today', f'{12}:{43}')
 
-    assert datetime_today.hour == hours
-    assert datetime_today.minute == minutes
+    assert datetime_today.hour == 12
+    assert datetime_today.minute == 43
 
 
-def test__compose_datetime__date_tomorrow():
-    datetime_tomorrow = datetime.now() + timedelta(days=1)
+def test__compose_datetime__date_tomorrow(today):
+    datetime_tomorrow = today + timedelta(days=1)
 
     result_datetime_tomorrow = compose_datetime_from('tomorrow', '12:15')
 
